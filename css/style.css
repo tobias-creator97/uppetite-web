@@ -854,3 +854,265 @@ button, input { font: inherit; border: none; outline: none; }
   .reveal, .reveal-hero, .reveal-phone { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================================
+   PRE-ORDER ADDITIONS (v3.2)
+   App Store CTAs, Testimonials, Sticky Mobile Bar
+   ============================================================ */
+
+/* App Store Button — black native style */
+.btn-appstore {
+  background: #000;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: var(--radius-chip);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn-appstore:hover {
+  background: #1a1a1a;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+.btn-appstore:active { transform: scale(0.97); }
+.btn-appstore svg { flex-shrink: 0; }
+.btn-appstore-lg {
+  padding: 16px 32px;
+  font-size: 1.0625rem;
+}
+
+/* Hero CTA Group — two buttons stacked nicely */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+}
+.hero-secondary {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+  border-bottom: 1px dashed transparent;
+}
+.hero-secondary:hover {
+  color: var(--text);
+  border-bottom-color: var(--text-tertiary);
+}
+
+/* CTA Section — Divider between App Store and Email backup */
+.cta-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 32px auto;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.cta-divider::before,
+.cta-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.cta-divider span {
+  padding: 0 14px;
+}
+.cta-email-label {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 14px;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--bg-tinted);
+}
+.testimonials-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.testimonials-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+  font-size: 1.0625rem;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testimonial {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.testimonial-quote {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
+  font-style: italic;
+}
+.testimonial-quote::before {
+  content: '"';
+  color: var(--orange);
+  font-size: 2rem;
+  line-height: 0;
+  margin-right: 2px;
+  font-weight: 700;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.testimonial-author strong {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.testimonial-meta {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+/* STICKY MOBILE CTA */
+.sticky-mobile-cta {
+  display: none;
+}
+@media (max-width: 768px) {
+  .sticky-mobile-cta {
+    display: flex;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: #000;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.30);
+    z-index: 90;
+    animation: stickySlideUp 0.5s ease 0.8s both;
+  }
+  .sticky-mobile-cta:active {
+    transform: scale(0.97);
+  }
+  .sticky-arrow {
+    margin-left: 2px;
+  }
+  /* Add bottom padding to body so sticky bar doesn't cover content */
+  body {
+    padding-bottom: 88px;
+  }
+  /* Stack testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-title {
+    font-size: 1.625rem;
+  }
+}
+
+@keyframes stickySlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet: 2 columns for testimonials */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .testimonial:last-child {
+    grid-column: 1 / -1;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* SOCIAL FOLLOW */
+.social-follow {
+  background: var(--bg-tinted);
+  padding: 64px 0;
+  text-align: center;
+}
+.social-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.social-sub {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--text);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.social-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.social-btn-tiktok {
+  background: #000;
+}

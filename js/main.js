@@ -109,4 +109,20 @@
       }
     });
   });
+
+  // --- Launch countdown ---
+  var countdownEl = document.getElementById('countdown-line');
+  if (countdownEl) {
+    var launchDate = new Date('2026-07-02T00:00:00+02:00');
+    var now = new Date();
+    var diffMs = launchDate - now;
+    var daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    if (daysLeft > 1) {
+      countdownEl.innerHTML = '🚀 <strong>Launch in ' + daysLeft + ' Tagen</strong> · 2. Juli 2026 · Kostenlos für iPhone';
+    } else if (daysLeft === 1) {
+      countdownEl.innerHTML = '🚀 <strong>Launch MORGEN</strong> · 2. Juli 2026 · Kostenlos für iPhone';
+    } else if (daysLeft === 0) {
+      countdownEl.innerHTML = '🎉 <strong>LIVE im App Store!</strong> Jetzt laden';
+    }
+  }
 })();
